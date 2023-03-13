@@ -1,8 +1,14 @@
 const { response, request } = require('express');
 
 const getUsers = (req = request, res = response) => {
+ //  const query = req.query;
+
+ const { query, id, name } = req.query;
  res.json({
   msg: 'get API With controllers  v1',
+  query,
+  id,
+  name,
  });
 };
 const postUsers = (req, res) => {
@@ -15,8 +21,10 @@ const postUsers = (req, res) => {
  });
 };
 const putUsers = (req, res) => {
+ const id = req.params.id;
  res.json({
   msg: 'put API',
+  id,
  });
 };
 const patchUsers = (req, res) => {
