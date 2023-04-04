@@ -4,8 +4,6 @@ const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
 
 const getUsers = (req = request, res = response) => {
- //  const query = req.query;
-
  const { query, id, name } = req.query;
  res.json({
   msg: 'get API With controllers  v1',
@@ -17,10 +15,15 @@ const getUsers = (req = request, res = response) => {
 
 const postUsers = async (req, res) => {
  const { name, email, password, role } = req.body;
-
  const user = new User({ name, email, password, role });
 
  // emails exist?
+ const existEmail = await User.findOne({ email });
+ if (existEmail) {
+  return res.status(400).json({
+   msg: 'Email already exist',
+  });
+ }
 
  // encrypt password
  const salt = bcryptjs.genSaltSync();
