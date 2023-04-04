@@ -9,6 +9,7 @@ const {
 
 const { check } = require('express-validator');
 const { validateFields } = require('../middlewares/validateFields');
+const { isValidRole } = require('../helpers/dbValidators');
 
 const UserRouter = Router();
 
@@ -21,7 +22,8 @@ UserRouter.post(
    min: 6,
   }),
   check('email', 'Email invalid  ').isEmail(),
-  check('role', 'Role invalid').isIn(['ADMIN_ROLE', 'USER_ROLE']),
+  check('email', 'Email invalid  ').isEmail(),
+  check('role').custom(isValidRole),
   validateFields,
  ],
  postUsers
