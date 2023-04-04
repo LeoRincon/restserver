@@ -9,7 +9,7 @@ const {
 
 const { check } = require('express-validator');
 const { validateFields } = require('../middlewares/validateFields');
-const { isValidRole } = require('../helpers/dbValidators');
+const { isValidRole, existEmail } = require('../helpers/dbvalidators');
 
 const UserRouter = Router();
 
@@ -22,7 +22,7 @@ UserRouter.post(
    min: 6,
   }),
   check('email', 'Email invalid  ').isEmail(),
-  check('email', 'Email invalid  ').isEmail(),
+  check('email').custom(existEmail),
   check('role').custom(isValidRole),
   validateFields,
  ],
