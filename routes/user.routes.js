@@ -3,7 +3,6 @@ const {
  getUsers,
  postUsers,
  putUsers,
- patchUsers,
  deleteUsers,
 } = require('../controllers/user.controller');
 
