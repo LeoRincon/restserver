@@ -15,8 +15,16 @@ const existEmail = async (email) => {
   throw new Error(`Email ${email}  exist`);
  }
 };
+const existUserById = async (userId) => {
+ const existUser = await User.findById(userId);
+
+ if (!existUser) {
+  throw new Error(`ID invalid`);
+ }
+};
 
 module.exports = {
  isValidRole,
  existEmail,
+ existUserById,
 };
