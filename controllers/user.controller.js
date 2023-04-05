@@ -53,9 +53,18 @@ const putUsers = async (req, res) => {
  });
 };
 
-const deleteUsers = (req, res) => {
+const deleteUsers = async (req, res) => {
+ const { id } = req.params;
+
+ // physical delete
+ //  const user = await User.findByIdAndDelete(id);
+
+ // logical delete (change state)
+ const user = await User.findByIdAndUpdate(id, { state: false }, { new: true });
+
  res.json({
-  msg: 'delete API',
+  msg: 'User deleted',
+  user,
  });
 };
 

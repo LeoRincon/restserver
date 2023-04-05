@@ -41,6 +41,14 @@ UserRouter.put(
  ],
  putUsers
 );
-UserRouter.delete('/', deleteUsers);
+UserRouter.delete(
+ '/:id',
+ [
+  check('id', 'ID is not valid').isMongoId(),
+  check('id').custom(existUserById),
+  validateFields,
+ ],
+ deleteUsers
+);
 
 module.exports = UserRouter;
