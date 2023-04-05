@@ -53,16 +53,10 @@ const putUsers = async (req, res) => {
  });
 };
 
-const patchUsers = (req, res) => {
- res.json({
-  msg: 'patch API',
- });
-};
-
 const deleteUsers = (req, res) => {
  res.json({
   msg: 'delete API',
  });
 };
 
-module.exports = { getUsers, postUsers, putUsers, patchUsers, deleteUsers };
+module.exports = { getUsers, postUsers, putUsers, deleteUsers };

@@ -42,7 +42,6 @@ UserRouter.put(
  ],
  putUsers
 );
-UserRouter.patch('/', patchUsers);
 UserRouter.delete('/', deleteUsers);
 
 module.exports = UserRouter;
