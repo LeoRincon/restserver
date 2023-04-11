@@ -15,7 +15,6 @@ const validateJWT = async (req, res, next) => {
   // const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
   const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
   const userAuthenticated = await User.findById(uid);
-  console.log(userAuthenticated);
 
   if (!userAuthenticated) {
    return res.status(401).json({

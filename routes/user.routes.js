@@ -8,15 +8,13 @@ const {
  deleteUsers,
 } = require('../controllers/user.controller');
 
-const { validateFields } = require('../middlewares/validateFields');
-const { validateJWT } = require('../middlewares/validate-jwt');
+const { validateFields, validateJWT, validateRole } = require('../middlewares');
 
 const {
  isValidRole,
  existEmail,
  existUserById,
 } = require('../helpers/dbvalidators');
-const { validateRole } = require('../middlewares/validate-roles');
 
 const UserRouter = Router();
 
