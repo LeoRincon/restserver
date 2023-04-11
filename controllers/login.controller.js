@@ -1,8 +1,12 @@
-const { response } = require('express');
+const { response, request } = require('express');
 
-const login = (_req, res = response) => {
+const login = (req = request, res = response) => {
+ const { email, password } = req.body;
+
  res.json({
   msg: 'login',
+  email,
+  password,
  });
 };
 
