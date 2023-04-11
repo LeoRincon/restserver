@@ -9,6 +9,8 @@ const {
 } = require('../controllers/user.controller');
 
 const { validateFields } = require('../middlewares/validateFields');
+const { validateJWT } = require('../middlewares/validate-jwt');
+
 const {
  isValidRole,
  existEmail,
@@ -45,6 +47,7 @@ UserRouter.put(
 UserRouter.delete(
  '/:id',
  [
+  validateJWT,
   check('id', 'ID is not valid').isMongoId(),
   check('id').custom(existUserById),
   validateFields,
