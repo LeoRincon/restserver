@@ -16,6 +16,7 @@ const {
  existEmail,
  existUserById,
 } = require('../helpers/dbvalidators');
+const { validateRole } = require('../middlewares/validate-roles');
 
 const UserRouter = Router();
 
@@ -48,6 +49,7 @@ UserRouter.delete(
  '/:id',
  [
   validateJWT,
+  validateRole('ADMIN_ROLE', 'SALES_ROLE'),
   check('id', 'ID is not valid').isMongoId(),
   check('id').custom(existUserById),
   validateFields,
