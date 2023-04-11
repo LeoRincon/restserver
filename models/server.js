@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 
 const UserRouter = require('../routes/user.routes');
-const LoginRouter = require('../routes/login.routes');
+const LoginRouter = require('../routes/auth.routes');
 
 const { dbConnection } = require('../database/config.database');
 
