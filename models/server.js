@@ -12,8 +12,13 @@ class Server {
   this.app = express();
   this.port = process.env.PORT || 8080;
   this.apiPath = '/api/v1';
-  this.userPath = `${this.apiPath}/users`;
-  this.loginPath = `${this.apiPath}/auth`;
+  this.paths = {
+   userPath: `${this.apiPath}/users`,
+   loginPath: `${this.apiPath}/auth`,
+   search: `${this.apiPath}/search`,
+   categories: `${this.apiPath}/categories`,
+   products: `${this.apiPath}/products`,
+  };
 
   // Connect to database
   this.connectDB();
@@ -29,15 +34,18 @@ class Server {
   await dbConnection();
  }
 
- routes() {
-  this.app.use(this.loginPath, LoginRouter);
-  this.app.use(this.userPath, UserRouter);
- }
-
  middleware() {
   this.app.use(cors());
   this.app.use(express.json());
   this.app.use(express.static('public'));
+ }
+
+ routes() {
+  this.app.use(this.paths.loginPath, require('../routes/auth.routes'));
+  this.app.use(this.paths.userPath, require('../routes/user.routes'));
+  this.app.use(this.paths.categories, require('../routes/categories.routes'));
+  this.app.use(this.paths.products, require('../routes/products.routes'));
+  this.app.use(this.paths.search, require('../routes/search.routes'));
  }
 
  listen() {
