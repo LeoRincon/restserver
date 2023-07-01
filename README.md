@@ -8,6 +8,17 @@ Use the package manager [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.
 
 `npm install` or `yarn`
 
+### Environment Variables
+
+```bash
+PORT=YOUR-DEFAULT-PORT
+MONGODB_CNN=YOUR-MONGODB-CONNECTION-STRING
+SECRETORPRIVATEKEY=YOUR-SECRET-OR-PRIVATE-KEY
+GOOGLE_CLIENT_ID=YOUR-GOOGLE-CLIENT-ID
+GOOGLE_SECRET_ID=YOUT-GOOGLE-SECRET-ID
+CLOUDINARY_URL=YOUR-CLOUDINARY-URL
+```
+
 ## Usage
 
 Add the environment variables in the .env file.
@@ -19,3 +30,7 @@ Run the following command to run the server in development mode.
 Run the following command to start the server.
 
 `npm start` or `yarn start`
+
+## API PostMan Documentation
+
+[PostMan Documentation](https://documenter.getpostman.com/view/14709848/2s93zCXzS5)
